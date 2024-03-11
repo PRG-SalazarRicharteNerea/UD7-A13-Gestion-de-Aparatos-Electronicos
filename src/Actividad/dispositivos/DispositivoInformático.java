@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dispositivos;
+package Actividad.dispositivos;
+
+import Tienda.AparatoElectrico;
 
 /**
  *
  * @author batoi
  */
-public class DispositivoInformático {
+public class DispositivoInformático extends AparatoElectrico {
 
     private boolean estaEncendido;
     private boolean estaConectadoAInternet;
