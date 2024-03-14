@@ -10,17 +10,26 @@ package Actividad.dispositivos;
  */
 public class Movil extends DispositivoInformático {
 
-    private String numeroDeSerie;
+    
     private MemoriaInterna memoriaInterna;
     private String marca;
     private String modelo;
+    
 
     public Movil(String numeroDeSerie, MemoriaInterna memoriaInterna, String marca, String modelo) {
-        this.numeroDeSerie = numeroDeSerie;
+        super(numeroDeSerie);
         this.memoriaInterna = memoriaInterna;
         this.marca = marca;
         this.modelo = modelo;
-
     }
+
+    @Override
+    public void mostrarDetalle() {
+        System.out.print("[Movil] ");
+        super.mostrarDetalle();
+        System.out.print(", Memoria: "+ memoriaInterna+", Marca: "+marca+", Modelo: "+modelo+"\n\n");
+    }
+    
+    
 
 }

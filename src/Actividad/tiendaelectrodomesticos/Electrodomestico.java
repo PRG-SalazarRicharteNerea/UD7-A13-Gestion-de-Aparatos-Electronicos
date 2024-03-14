@@ -11,30 +11,29 @@ import Tienda.AparatoElectrico;
  * @author batoi
  */
 public class Electrodomestico extends AparatoElectrico {
-    
-    private int numeroSerie;
-    private int precioBase;
+
+    protected int precioBase;
     private String marca;
     private String modelo;
-    private Color color;
-    private ConsumoEnergetico consumoEnergetico;
+    protected Color color;
+    protected ConsumoEnergetico consumoEnergetico;
     private int peso;
-    private boolean estaEncedido;
+
     // Constructor
-    public Electrodomestico(int numeroSerie, String marca, String modelo) {
-        this.numeroSerie = numeroSerie;
-        this.precioBase = 100;
+    public Electrodomestico(String numeroSerie, String marca, String modelo) {
+        super(numeroSerie);
         this.marca = marca;
+        this.modelo = modelo;
+        this.precioBase = 100;
         this.color = Color.BLANCO;
         this.consumoEnergetico = ConsumoEnergetico.F;
         this.peso = 5;
-        this.modelo = modelo;
+
     }
 
-   public int obtenerPrecioVenta() {
-        int precioVenta = this.precioBase; 
+    public int obtenerPrecioVenta() {
+        int precioVenta = this.precioBase;
 
- 
         switch (this.consumoEnergetico) {
             case A:
                 precioVenta += 100;
@@ -59,10 +58,10 @@ public class Electrodomestico extends AparatoElectrico {
         return precioVenta;
     }
 
-    public void ElectrodomesticoEncedido() {
-        this.estaEncedido = false;
+    @Override
+    public void mostrarDetalle() {
+        super.mostrarDetalle();
+        System.out.println(", Marca: " + marca + ", Modelo: " + modelo);
     }
-   
-   
-}
 
+}

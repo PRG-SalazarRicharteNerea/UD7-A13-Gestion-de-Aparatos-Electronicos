@@ -10,17 +10,24 @@ package Actividad.dispositivos;
  */
 public class Computador extends DispositivoInformático {
 
-    private String numeroDeSerie;
     private int memoriaRam;
     private double velocidadCpu;
     private double tamaño;
 
     public Computador(String numeroDeSerie, int memoriaRam, double velocidadCpu, double tamaño) {
-        this.numeroDeSerie = numeroDeSerie;
+        super(numeroDeSerie);
         this.memoriaRam = memoriaRam;
         this.velocidadCpu = velocidadCpu;
         this.tamaño = tamaño;
 
     }
 
+      
+    @Override
+    public void mostrarDetalle() {
+        System.out.print("[Computador] ");
+        super.mostrarDetalle(); 
+        System.out.print((estaConectadoAInternet? "Conectado a Internet" : "No conectado a Internet")+ ", RAM: " + memoriaRam + ", Velocidad CPU: "+ velocidadCpu+ ", Tamaño HD: " + tamaño+"\n\n");
+    }
+    
 }

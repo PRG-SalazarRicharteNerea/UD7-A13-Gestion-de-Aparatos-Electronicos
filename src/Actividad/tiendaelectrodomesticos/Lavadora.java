@@ -10,20 +10,18 @@ package Actividad.tiendaelectrodomesticos;
  */
 public class Lavadora extends Electrodomestico {
     private int carga;
+     int precioFinal=0;
 
-    public Lavadora(int numeroSerie, String marca, String modelo) {
+    public Lavadora(String numeroSerie, String marca, String modelo) {
         super(numeroSerie, marca, modelo);
         this.carga = 7;
     }
 
-    @Override
-    public void ElectrodomesticoEncedido() {
-    }
     
      
    @Override
     public int obtenerPrecioVenta() {
-        int precioFinal = super.obtenerPrecioVenta();
+        precioFinal = super.obtenerPrecioVenta();
 
         if (this.carga > 10) {
             precioFinal += 50; 
@@ -31,6 +29,14 @@ public class Lavadora extends Electrodomestico {
 
         return precioFinal;
     }
+
+    @Override
+    public void mostrarDetalle() {
+        System.out.print("[Lavadora] ");
+        super.mostrarDetalle(); 
+        System.out.print(", Tipo consumo: "+ consumoEnergetico +", Color"+color+", Precio Base: "+precioBase+", Precio Final: "+precioFinal+", Carga: "+carga+"\n\n");
+    }
+    
     
     
     

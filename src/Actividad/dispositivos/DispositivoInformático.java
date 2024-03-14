@@ -12,11 +12,11 @@ import Tienda.AparatoElectrico;
  */
 public class DispositivoInformático extends AparatoElectrico {
 
-    private boolean estaEncendido;
-    private boolean estaConectadoAInternet;
+    
+    protected boolean estaConectadoAInternet;
 
-    public DispositivoInformático() {
-        this.estaEncendido = false;
+    public DispositivoInformático(String numeroSerie) {
+        super(numeroSerie);
         this.estaConectadoAInternet = false;
     }
 

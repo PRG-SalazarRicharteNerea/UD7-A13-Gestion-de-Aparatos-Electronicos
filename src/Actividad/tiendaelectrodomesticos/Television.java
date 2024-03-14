@@ -8,37 +8,36 @@ package Actividad.tiendaelectrodomesticos;
  *
  * @author batoi
  */
-public class Television extends Electrodomestico{
+public class Television extends Electrodomestico {
+
     private boolean estaWifiHabilitado;
     private boolean estaConectadoAInternet;
     private int resolucion;
+    int precioFinal = 0;
 
-    public Television(boolean estaWifiHabilitado, boolean estaConectadoAInternet, int resolucion, int numeroSerie, String marca, String modelo) {
+    public Television(int resolucion, String numeroSerie, String marca, String modelo) {
         super(numeroSerie, marca, modelo);
         this.estaWifiHabilitado = false;
         this.estaConectadoAInternet = false;
         this.resolucion = 20;
     }
 
-  @Override
-    public void ElectrodomesticoEncedido() {
-    }
-    
-      @Override
+    @Override
     public int obtenerPrecioVenta() {
-        int precioFinal = super.obtenerPrecioVenta();
+        precioFinal = super.obtenerPrecioVenta();
 
         if (this.resolucion > 40) {
-            precioFinal += (precioFinal * 30) / 100; 
-        }
-
-        if (estaWifiHabilitado) {
-            precioFinal += 50;
+            precioFinal += (precioFinal * 30) / 100;
         }
 
         return precioFinal;
     }
-    
-    
-    
+
+    @Override
+    public void mostrarDetalle() {
+        System.out.print("[Television] ");
+        super.mostrarDetalle();
+        System.out.print(", Tipo consumo: " + consumoEnergetico + ", Color" + color + ", Precio Base: " + precioBase + ", Precio Final: " + precioFinal+ (estaWifiHabilitado? ", Wifi habilitado" : ", Wifi deshabilitado")+ (estaConectadoAInternet? ", Conectado a Internet" : ", No conectado a Internet")+", Resolucion: "+resolucion+"\n\n");
+    }
+
 }
