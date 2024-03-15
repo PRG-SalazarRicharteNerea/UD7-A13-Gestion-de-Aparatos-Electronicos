@@ -10,7 +10,7 @@ package Actividad.dispositivos;
  */
 public class Movil extends DispositivoInformático {
 
-    
+  
     private MemoriaInterna memoriaInterna;
     private String marca;
     private String modelo;
@@ -29,7 +29,8 @@ public class Movil extends DispositivoInformático {
         super.mostrarDetalle();
         System.out.print(", Memoria: "+ memoriaInterna+", Marca: "+marca+", Modelo: "+modelo+"\n\n");
     }
+ 
     
-    
+
 
 }

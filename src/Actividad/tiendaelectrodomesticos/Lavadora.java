@@ -16,7 +16,6 @@ public class Lavadora extends Electrodomestico {
         super(numeroSerie, marca, modelo);
         this.carga = 7;
     }
-
     
      
    @Override

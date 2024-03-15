@@ -8,33 +8,44 @@ package Tienda;
  *
  * @author batoi
  */
-public abstract class AparatoElectrico implements Enchufable {
-
+public class AparatoElectrico implements Enchufable {
     private boolean estaRecibiendoCorriente;
-
     private String numeroSerie;
+  private boolean estaEncedido;
 
-    private boolean estaEncendido;
+  
+   public void AparatoElectricoEncedido() {
+        this.estaEncedido = false;
+    }
+   
+    public AparatoElectrico() {
+    this.estaRecibiendoCorriente = false;
+}
 
     public AparatoElectrico(String numeroSerie) {
-        this.estaRecibiendoCorriente = false;
         this.numeroSerie = numeroSerie;
-        this.estaEncendido = false;
-    }
-
-    @Override
-    public void quitarEnergia() {
-
-        this.estaRecibiendoCorriente = true;
-
+        this.estaRecibiendoCorriente = false;
     }
 
     @Override
     public void darEnergia() {
+        this.estaRecibiendoCorriente = true;
+    }
+
+    @Override
+    public void quitarEnergia() {
         this.estaRecibiendoCorriente = false;
     }
 
+    public boolean estaRecibiendoCorriente() {
+        return estaRecibiendoCorriente;
+    }
+
+    public String getNumeroSerie() {
+        return numeroSerie;
+    }
+
     public void mostrarDetalle() {
-        System.out.print("Num.Serie:" + numeroSerie + (estaRecibiendoCorriente ? ", (Con corriente electtrica)" : ", (sin corriente electrica)") + (estaEncendido ? ", está encendido" : ", no está encendido"));
+        System.out.print("Num.Serie: " + numeroSerie + (estaRecibiendoCorriente ? ", (Con corriente eléctrica)" : ", (Sin corriente eléctrica)") + (estaEncedido? ", Esta encendido" : ", No está encendido"));
     }
 }

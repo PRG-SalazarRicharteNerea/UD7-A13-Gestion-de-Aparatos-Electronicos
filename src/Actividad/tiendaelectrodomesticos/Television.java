@@ -8,8 +8,8 @@ package Actividad.tiendaelectrodomesticos;
  *
  * @author batoi
  */
-public class Television extends Electrodomestico {
-
+public class Television extends Electrodomestico{
+    
     private boolean estaWifiHabilitado;
     private boolean estaConectadoAInternet;
     private int resolucion;

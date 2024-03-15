@@ -12,12 +12,19 @@ import Tienda.AparatoElectrico;
  */
 public class DispositivoInformático extends AparatoElectrico {
 
-    
     protected boolean estaConectadoAInternet;
+ 
 
     public DispositivoInformático(String numeroSerie) {
         super(numeroSerie);
         this.estaConectadoAInternet = false;
     }
+    
+    @Override
+    public void mostrarDetalle() {
+        super.mostrarDetalle();
+        System.out.print((estaConectadoAInternet ? ", Conectado a Internet" : ", No conectado a internet"));
+    }
+    
 
 }

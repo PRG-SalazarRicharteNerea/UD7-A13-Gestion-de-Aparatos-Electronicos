@@ -9,56 +9,56 @@ package Tienda;
  * @author batoi
  */
 public class Regleta {
-private static final int MAXIMO_ENCHUFADOS = 10;
-       private Enchufable[] aparatosEnchufados;
-       private int contador=0;
-       
-public Regleta(){
-    this.aparatosEnchufados= new Enchufable[MAXIMO_ENCHUFADOS];
-    
-}
+    private static final int MAXIMO_ENCHUFADOS = 10;
+    private AparatoElectrico[] aparatosEnchufados;
+    private int contador;
 
- public boolean enchufar(Enchufable aparato) {
+    public Regleta() {
+        this.aparatosEnchufados = new AparatoElectrico[MAXIMO_ENCHUFADOS];
+        this.contador = 0;
+    }
+
+    public boolean enchufar(AparatoElectrico aparato) {
         if (contador < MAXIMO_ENCHUFADOS && !contieneAparato(aparato)) {
-            aparatosEnchufados[contador] = aparato;
+            aparatosEnchufados[contador++] = aparato;
             aparato.darEnergia();
-            contador++;
             return true;
         }
         return false;
     }
- 
-  public boolean desenchufar(Enchufable aparato) {
+
+    public boolean desenchufar(AparatoElectrico aparato) {
         for (int i = 0; i < contador; i++) {
-            if (aparatosEnchufados[i] == aparato) {
-                aparato.quitarEnergia();
-                for (int j = i; j < contador - 1; j++) {
-                    aparatosEnchufados[j] = aparatosEnchufados[j + 1];
-                }
-                aparatosEnchufados[contador - 1] = null;
-                contador--;
+            if (aparatosEnchufados[i].getNumeroSerie().equals(aparato.getNumeroSerie())) {
+                aparatosEnchufados[i].quitarEnergia();
+                aparatosEnchufados[i] = aparatosEnchufados[--contador];
+                aparatosEnchufados[contador] = null;
                 return true;
             }
         }
         return false;
     }
-  
-  public void mostrarAparatosConectados() {
-        System.out.println("Aparatos conectados a la regleta:");
-        for (int i = 0; i < contador; i++) {
-            System.out.println("- " + ((AparatoElectrico) aparatosEnchufados[i]));
+
+   private boolean contieneAparato(AparatoElectrico aparato) {
+    for (int i = 0; i < contador; i++) {
+        if (aparatosEnchufados[i].getNumeroSerie() != null && aparatosEnchufados[i].getNumeroSerie().equals(aparato.getNumeroSerie())) {
+            return true;
         }
-        System.out.println("Número de tomas libres: " + (MAXIMO_ENCHUFADOS - contador));
     }
- 
- private boolean contieneAparato(Enchufable aparato) {
-        for (int i = 0; i < contador; i++) {
-            if (aparatosEnchufados[i] == aparato) {
-                return true;
-            }
-        }
-        return false;
-    }
+    return false;
 }
 
+    public void mostrarAparatosConectados() {
+        if (contador == 0) {
+            System.out.println("No hay aparatos conectados a la regleta.");
+        } else {
+            for (int i = 0; i < contador; i++) {
+                aparatosEnchufados[i].mostrarDetalle();
+            }
+        }
+    }
 
+    public int numeroTomasLibres() {
+        return MAXIMO_ENCHUFADOS - contador;
+    }
+}
